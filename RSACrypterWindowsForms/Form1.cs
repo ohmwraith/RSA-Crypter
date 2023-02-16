@@ -51,8 +51,15 @@ namespace RSACrypterWindowsForms
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Выбрать открытый ключ";
             if (ofd.ShowDialog() != DialogResult.OK) return;
-            RSA.FromXmlString(File.ReadAllText(ofd.FileName));
-            MessageBox.Show("Ключ успешно загружен", "Ключи RSA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                RSA.FromXmlString(File.ReadAllText(ofd.FileName));
+                MessageBox.Show("Ключ успешно загружен", "Ключи RSA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (System.Security.XmlSyntaxException)
+            {
+                MessageBox.Show("Файл не является ключом", "Ключи RSA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void зашифроватьВФайлToolStripMenuItem_Click(object sender, EventArgs e)
@@ -122,10 +129,17 @@ namespace RSACrypterWindowsForms
         private void расшифроватьФайлToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "";
+            ofd.Title = "Выбор зашифрованного файла";
             if (ofd.ShowDialog() != DialogResult.OK) return;
-            raw_data = RSAEncryptionDecryption.decrypt(RSA, File.ReadAllBytes(ofd.FileName));
-            decryptedTextBox.Text = Encoding.UTF8.GetString(raw_data);
+            try
+            {
+                raw_data = RSAEncryptionDecryption.decrypt(RSA, File.ReadAllBytes(ofd.FileName));
+                decryptedTextBox.Text = Encoding.UTF8.GetString(raw_data);
+            }
+            catch (System.Security.Cryptography.CryptographicException)
+            {
+                MessageBox.Show("Плохой формат файла или неверный закрытый ключ", "RSA шифрование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void отобразитьЗашифрованныйФайлToolStripMenuItem_Click(object sender, EventArgs e)
