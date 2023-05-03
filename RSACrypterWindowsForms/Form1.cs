@@ -127,8 +127,6 @@ namespace RSACrypterWindowsForms
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Выбор зашифрованного файла";
             if (ofd.ShowDialog() != DialogResult.OK) return;
-            raw_data = RSAEncryptionDecryption.decrypt(RSA, algorithm, File.ReadAllBytes(ofd.FileName));
-            decryptedTextBox.Text = Encoding.UTF8.GetString(raw_data);
             try
             {
                 raw_data = RSAEncryptionDecryption.decrypt(RSA, algorithm, File.ReadAllBytes(ofd.FileName));
