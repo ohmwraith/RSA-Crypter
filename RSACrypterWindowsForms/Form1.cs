@@ -17,9 +17,10 @@ namespace RSACrypterWindowsForms
         public Form1()
         {
             InitializeComponent();
+            toolStripComboBox1.SelectedIndex = 0;
         }
         RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(512);
-        DESCryptoServiceProvider DES = new DESCryptoServiceProvider();
+        SymmetricAlgorithm algorithm;
         byte[] raw_data, encrypted_data;
 
         private void новаяПараRSAToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,14 +70,9 @@ namespace RSACrypterWindowsForms
             sfd.DefaultExt = ".crypt";
             if (sfd.ShowDialog() != DialogResult.OK) return;
             raw_data = Encoding.UTF8.GetBytes(decryptedTextBox.Text);
-            encrypted_data = RSAEncryptionDecryption.encrypt(RSA, DES, raw_data);
+            encrypted_data = RSAEncryptionDecryption.encrypt(RSA, algorithm, raw_data);
             File.WriteAllBytes(sfd.FileName, encrypted_data);
             MessageBox.Show("Данные успешно зашифрованы и сохранены", "Шифрование RSA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void расшифроватьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void openEncryptedButton_Click(object sender, EventArgs e)
@@ -93,7 +89,6 @@ namespace RSACrypterWindowsForms
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Title = "Сохранить зашифрованные данные в файл";
             if (sfd.ShowDialog() != DialogResult.OK) return;
-            encrypted_data = Encoding.UTF8.GetBytes(encryptedTextBox.Text);
             File.WriteAllBytes(sfd.FileName, encrypted_data);
         }
 
@@ -111,20 +106,19 @@ namespace RSACrypterWindowsForms
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Сохранить текст в файл";
             if (ofd.ShowDialog() != DialogResult.OK) return;
-            encrypted_data = Encoding.UTF8.GetBytes(encryptedTextBox.Text);
             File.WriteAllBytes(ofd.FileName, raw_data);
         }
 
         private void encryptButton_Click(object sender, EventArgs e)
         {
             raw_data = Encoding.UTF8.GetBytes(decryptedTextBox.Text);
-            encrypted_data = RSAEncryptionDecryption.encrypt(RSA, DES, raw_data);
+            encrypted_data = RSAEncryptionDecryption.encrypt(RSA, algorithm, raw_data);
             encryptedTextBox.Text = Encoding.UTF8.GetString(encrypted_data);
         }
 
         private void decryptButton_Click(object sender, EventArgs e)
         {
-            raw_data = RSAEncryptionDecryption.decrypt(RSA, encrypted_data);
+            raw_data = RSAEncryptionDecryption.decrypt(RSA, algorithm, encrypted_data);
             decryptedTextBox.Text = Encoding.UTF8.GetString(raw_data);
         }
 
@@ -133,9 +127,11 @@ namespace RSACrypterWindowsForms
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Выбор зашифрованного файла";
             if (ofd.ShowDialog() != DialogResult.OK) return;
+            raw_data = RSAEncryptionDecryption.decrypt(RSA, algorithm, File.ReadAllBytes(ofd.FileName));
+            decryptedTextBox.Text = Encoding.UTF8.GetString(raw_data);
             try
             {
-                raw_data = RSAEncryptionDecryption.decrypt(RSA, File.ReadAllBytes(ofd.FileName));
+                raw_data = RSAEncryptionDecryption.decrypt(RSA, algorithm, File.ReadAllBytes(ofd.FileName));
                 decryptedTextBox.Text = Encoding.UTF8.GetString(raw_data);
             }
             catch (System.Security.Cryptography.CryptographicException)
@@ -143,6 +139,33 @@ namespace RSACrypterWindowsForms
                 MessageBox.Show("Плохой формат файла или неверный закрытый ключ", "RSA шифрование", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (toolStripComboBox1.SelectedIndex)
+            {
+                case 0:
+                    label1.Text = "RSA/DES";
+                    algorithm = SymmetricAlgorithm.Create("DES");
+                    break;
+                case 1:
+                    label1.Text = "RSA/TripleDES";
+                    algorithm = SymmetricAlgorithm.Create("TripleDES");
+                    break;
+                case 2:
+                    label1.Text = "RSA/RC2";
+                    algorithm = SymmetricAlgorithm.Create("RC2");
+                    break;
+                case 3:
+                    label1.Text = "RSA/Rij";
+                    algorithm = SymmetricAlgorithm.Create("Rijndael");
+                    break;
+                case 4:
+                    label1.Text = "RSA/AES";
+                    algorithm = SymmetricAlgorithm.Create("AES");
+                    break;
+            }
+            }
 
         private void отобразитьЗашифрованныйФайлToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -154,19 +177,19 @@ namespace RSACrypterWindowsForms
         }
     }
     public class RSAEncryptionDecryption{
-        public static byte[] encrypt(RSACryptoServiceProvider RSA, DESCryptoServiceProvider DES, byte[] data)
+        public static byte[] encrypt(RSACryptoServiceProvider RSA, SymmetricAlgorithm algorithm, byte[] data)
         {
             byte[] encrypted_data;
 
             using (MemoryStream ms = new MemoryStream())
             {
-                byte[] encryptedDESKey = RSA.Encrypt(DES.Key, false);
-                byte[] encryptedDESIV = RSA.Encrypt(DES.IV, false);
+                byte[] encryptedDESKey = RSA.Encrypt(algorithm.Key, false);
+                byte[] encryptedDESIV = RSA.Encrypt(algorithm.IV, false);
 
                 ms.Write(encryptedDESKey, 0, encryptedDESKey.Length);
                 ms.Write(encryptedDESIV, 0, encryptedDESIV.Length);
 
-                ICryptoTransform transform = DES.CreateEncryptor();
+                ICryptoTransform transform = algorithm.CreateEncryptor();
                 using (CryptoStream cs = new CryptoStream(ms, transform, CryptoStreamMode.Write))
                 {
                     cs.Write(data, 0, data.Length);
@@ -177,7 +200,7 @@ namespace RSACrypterWindowsForms
             }
             return encrypted_data;
         }
-        public static byte[] decrypt(RSACryptoServiceProvider RSA, byte[] data)
+        public static byte[] decrypt(RSACryptoServiceProvider RSA, SymmetricAlgorithm algorithm, byte[] data)
         {
             byte[] decrypted_data;
 
@@ -190,19 +213,17 @@ namespace RSACrypterWindowsForms
                 Int32 KeyBlockSize = System.Convert.ToInt32(RSA.KeySize / 8);
                 // Получение зашифрованного симметричного ключа и
                 // вектора инициализации
-                DESCryptoServiceProvider DES = new DESCryptoServiceProvider();
                 Byte[] EncrypKey = new Byte[KeyBlockSize];
                 Byte[] EncrypIV = new Byte[KeyBlockSize];
 
                 ms.Read(EncrypKey, 0, EncrypKey.Length);
                 ms.Read(EncrypIV, 0, EncrypIV.Length);
 
-                DES.KeySize = KeyBlockSize;
-                DES.Key = RSA.Decrypt(EncrypKey, false);
-                DES.IV = RSA.Decrypt(EncrypIV, false);
+                algorithm.Key = RSA.Decrypt(EncrypKey, false);
+                algorithm.IV = RSA.Decrypt(EncrypIV, false);
 
                 // Чтение оставшейся части файла с помощью симметричного ключа
-                ICryptoTransform transform = DES.CreateDecryptor();
+                ICryptoTransform transform = algorithm.CreateDecryptor();
                 using (CryptoStream cs = new CryptoStream(ms, transform, CryptoStreamMode.Read))
                 {
                     decrypted_data = new byte[ms.Length];
