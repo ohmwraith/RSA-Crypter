@@ -64,7 +64,8 @@
             this.дешифрованиеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 29);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(600, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -74,13 +75,13 @@
             this.новаяПараRSAToolStripMenuItem,
             this.сохранитьКлючиToolStripMenuItem});
             this.ключиRSAToolStripMenuItem.Name = "ключиRSAToolStripMenuItem";
-            this.ключиRSAToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.ключиRSAToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.ключиRSAToolStripMenuItem.Text = "Ключи RSA";
             // 
             // новаяПараRSAToolStripMenuItem
             // 
             this.новаяПараRSAToolStripMenuItem.Name = "новаяПараRSAToolStripMenuItem";
-            this.новаяПараRSAToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.новаяПараRSAToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.новаяПараRSAToolStripMenuItem.Text = "Новая пара RSA";
             this.новаяПараRSAToolStripMenuItem.Click += new System.EventHandler(this.новаяПараRSAToolStripMenuItem_Click);
             // 
@@ -90,20 +91,20 @@
             this.сохранитьПаруToolStripMenuItem,
             this.сохранитьОткрытыйToolStripMenuItem});
             this.сохранитьКлючиToolStripMenuItem.Name = "сохранитьКлючиToolStripMenuItem";
-            this.сохранитьКлючиToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.сохранитьКлючиToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.сохранитьКлючиToolStripMenuItem.Text = "Сохранить ключи";
             // 
             // сохранитьПаруToolStripMenuItem
             // 
             this.сохранитьПаруToolStripMenuItem.Name = "сохранитьПаруToolStripMenuItem";
-            this.сохранитьПаруToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
+            this.сохранитьПаруToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.сохранитьПаруToolStripMenuItem.Text = "Сохранить пару";
             this.сохранитьПаруToolStripMenuItem.Click += new System.EventHandler(this.сохранитьПаруToolStripMenuItem_Click);
             // 
             // сохранитьОткрытыйToolStripMenuItem
             // 
             this.сохранитьОткрытыйToolStripMenuItem.Name = "сохранитьОткрытыйToolStripMenuItem";
-            this.сохранитьОткрытыйToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
+            this.сохранитьОткрытыйToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.сохранитьОткрытыйToolStripMenuItem.Text = "Сохранить открытый";
             this.сохранитьОткрытыйToolStripMenuItem.Click += new System.EventHandler(this.сохранитьОткрытыйToolStripMenuItem_Click);
             // 
@@ -114,26 +115,26 @@
             this.обновитьКлючDESToolStripMenuItem,
             this.зашифроватьВФайлToolStripMenuItem});
             this.шифрованиеToolStripMenuItem.Name = "шифрованиеToolStripMenuItem";
-            this.шифрованиеToolStripMenuItem.Size = new System.Drawing.Size(119, 25);
+            this.шифрованиеToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.шифрованиеToolStripMenuItem.Text = "Шифрование";
             // 
             // прочитатьОткрытыйКлючToolStripMenuItem
             // 
             this.прочитатьОткрытыйКлючToolStripMenuItem.Name = "прочитатьОткрытыйКлючToolStripMenuItem";
-            this.прочитатьОткрытыйКлючToolStripMenuItem.Size = new System.Drawing.Size(288, 26);
+            this.прочитатьОткрытыйКлючToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.прочитатьОткрытыйКлючToolStripMenuItem.Text = "Прочитать открытый ключ";
             this.прочитатьОткрытыйКлючToolStripMenuItem.Click += new System.EventHandler(this.прочитатьОткрытыйКлючToolStripMenuItem_Click);
             // 
             // обновитьКлючDESToolStripMenuItem
             // 
             this.обновитьКлючDESToolStripMenuItem.Name = "обновитьКлючDESToolStripMenuItem";
-            this.обновитьКлючDESToolStripMenuItem.Size = new System.Drawing.Size(288, 26);
+            this.обновитьКлючDESToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.обновитьКлючDESToolStripMenuItem.Text = "Обновить ключ DES";
             // 
             // зашифроватьВФайлToolStripMenuItem
             // 
             this.зашифроватьВФайлToolStripMenuItem.Name = "зашифроватьВФайлToolStripMenuItem";
-            this.зашифроватьВФайлToolStripMenuItem.Size = new System.Drawing.Size(288, 26);
+            this.зашифроватьВФайлToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.зашифроватьВФайлToolStripMenuItem.Text = "Зашифровать в файл";
             this.зашифроватьВФайлToolStripMenuItem.Click += new System.EventHandler(this.зашифроватьВФайлToolStripMenuItem_Click);
             // 
@@ -143,37 +144,39 @@
             this.отобразитьЗашифрованныйФайлToolStripMenuItem,
             this.расшифроватьФайлToolStripMenuItem});
             this.дешифрованиеToolStripMenuItem.Name = "дешифрованиеToolStripMenuItem";
-            this.дешифрованиеToolStripMenuItem.Size = new System.Drawing.Size(136, 25);
+            this.дешифрованиеToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
             this.дешифрованиеToolStripMenuItem.Text = "Дешифрование";
             // 
             // отобразитьЗашифрованныйФайлToolStripMenuItem
             // 
             this.отобразитьЗашифрованныйФайлToolStripMenuItem.Name = "отобразитьЗашифрованныйФайлToolStripMenuItem";
-            this.отобразитьЗашифрованныйФайлToolStripMenuItem.Size = new System.Drawing.Size(343, 26);
+            this.отобразитьЗашифрованныйФайлToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.отобразитьЗашифрованныйФайлToolStripMenuItem.Text = "Отобразить зашифрованный файл";
             this.отобразитьЗашифрованныйФайлToolStripMenuItem.Click += new System.EventHandler(this.отобразитьЗашифрованныйФайлToolStripMenuItem_Click);
             // 
             // расшифроватьФайлToolStripMenuItem
             // 
             this.расшифроватьФайлToolStripMenuItem.Name = "расшифроватьФайлToolStripMenuItem";
-            this.расшифроватьФайлToolStripMenuItem.Size = new System.Drawing.Size(343, 26);
+            this.расшифроватьФайлToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.расшифроватьФайлToolStripMenuItem.Text = "Расшифровать файл";
             this.расшифроватьФайлToolStripMenuItem.Click += new System.EventHandler(this.расшифроватьФайлToolStripMenuItem_Click);
             // 
             // encryptedTextBox
             // 
-            this.encryptedTextBox.Location = new System.Drawing.Point(51, 193);
+            this.encryptedTextBox.Location = new System.Drawing.Point(38, 146);
+            this.encryptedTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.encryptedTextBox.Name = "encryptedTextBox";
             this.encryptedTextBox.ReadOnly = true;
-            this.encryptedTextBox.Size = new System.Drawing.Size(283, 158);
+            this.encryptedTextBox.Size = new System.Drawing.Size(213, 129);
             this.encryptedTextBox.TabIndex = 1;
             this.encryptedTextBox.Text = "";
             // 
             // decryptedTextBox
             // 
-            this.decryptedTextBox.Location = new System.Drawing.Point(441, 193);
+            this.decryptedTextBox.Location = new System.Drawing.Point(331, 146);
+            this.decryptedTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.decryptedTextBox.Name = "decryptedTextBox";
-            this.decryptedTextBox.Size = new System.Drawing.Size(283, 158);
+            this.decryptedTextBox.Size = new System.Drawing.Size(213, 129);
             this.decryptedTextBox.TabIndex = 2;
             this.decryptedTextBox.Text = "";
             // 
@@ -181,9 +184,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Metropolis", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 49);
+            this.label1.Location = new System.Drawing.Point(27, 33);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(523, 80);
+            this.label1.Size = new System.Drawing.Size(417, 64);
             this.label1.TabIndex = 3;
             this.label1.Text = "RSA Crypter";
             // 
@@ -191,9 +195,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Metropolis", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(46, 157);
+            this.label2.Location = new System.Drawing.Point(34, 117);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 30);
+            this.label2.Size = new System.Drawing.Size(102, 24);
             this.label2.TabIndex = 6;
             this.label2.Text = "Crypted";
             // 
@@ -201,9 +206,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Metropolis", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(436, 157);
+            this.label3.Location = new System.Drawing.Point(327, 117);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(167, 30);
+            this.label3.Size = new System.Drawing.Size(131, 24);
             this.label3.TabIndex = 7;
             this.label3.Text = "Decrypted";
             // 
@@ -212,9 +218,10 @@
             this.openEncryptedButton.BackgroundImage = global::RSACrypterWindowsForms.Properties.Resources.open;
             this.openEncryptedButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.openEncryptedButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.openEncryptedButton.Location = new System.Drawing.Point(248, 147);
+            this.openEncryptedButton.Location = new System.Drawing.Point(186, 108);
+            this.openEncryptedButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openEncryptedButton.Name = "openEncryptedButton";
-            this.openEncryptedButton.Size = new System.Drawing.Size(40, 40);
+            this.openEncryptedButton.Size = new System.Drawing.Size(30, 32);
             this.openEncryptedButton.TabIndex = 8;
             this.openEncryptedButton.UseVisualStyleBackColor = true;
             this.openEncryptedButton.Click += new System.EventHandler(this.openEncryptedButton_Click);
@@ -224,9 +231,10 @@
             this.saveEncryptedButton.BackgroundImage = global::RSACrypterWindowsForms.Properties.Resources.save;
             this.saveEncryptedButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.saveEncryptedButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saveEncryptedButton.Location = new System.Drawing.Point(294, 147);
+            this.saveEncryptedButton.Location = new System.Drawing.Point(220, 108);
+            this.saveEncryptedButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveEncryptedButton.Name = "saveEncryptedButton";
-            this.saveEncryptedButton.Size = new System.Drawing.Size(40, 40);
+            this.saveEncryptedButton.Size = new System.Drawing.Size(30, 32);
             this.saveEncryptedButton.TabIndex = 5;
             this.saveEncryptedButton.UseVisualStyleBackColor = true;
             this.saveEncryptedButton.Click += new System.EventHandler(this.saveEncryptedButton_Click);
@@ -236,9 +244,10 @@
             this.saveRawButton.BackgroundImage = global::RSACrypterWindowsForms.Properties.Resources.save;
             this.saveRawButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.saveRawButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saveRawButton.Location = new System.Drawing.Point(684, 147);
+            this.saveRawButton.Location = new System.Drawing.Point(513, 108);
+            this.saveRawButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveRawButton.Name = "saveRawButton";
-            this.saveRawButton.Size = new System.Drawing.Size(40, 40);
+            this.saveRawButton.Size = new System.Drawing.Size(30, 32);
             this.saveRawButton.TabIndex = 4;
             this.saveRawButton.UseVisualStyleBackColor = true;
             this.saveRawButton.Click += new System.EventHandler(this.saveRawButton_Click);
@@ -248,9 +257,10 @@
             this.openRawButton.BackgroundImage = global::RSACrypterWindowsForms.Properties.Resources.open;
             this.openRawButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.openRawButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.openRawButton.Location = new System.Drawing.Point(638, 147);
+            this.openRawButton.Location = new System.Drawing.Point(478, 108);
+            this.openRawButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openRawButton.Name = "openRawButton";
-            this.openRawButton.Size = new System.Drawing.Size(40, 40);
+            this.openRawButton.Size = new System.Drawing.Size(30, 32);
             this.openRawButton.TabIndex = 9;
             this.openRawButton.UseVisualStyleBackColor = true;
             this.openRawButton.Click += new System.EventHandler(this.openRawButton_Click);
@@ -258,9 +268,10 @@
             // decryptButton
             // 
             this.decryptButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.decryptButton.Location = new System.Drawing.Point(51, 358);
+            this.decryptButton.Location = new System.Drawing.Point(38, 280);
+            this.decryptButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.decryptButton.Name = "decryptButton";
-            this.decryptButton.Size = new System.Drawing.Size(283, 49);
+            this.decryptButton.Size = new System.Drawing.Size(212, 40);
             this.decryptButton.TabIndex = 10;
             this.decryptButton.Text = "Расшифровать";
             this.decryptButton.UseVisualStyleBackColor = true;
@@ -269,9 +280,10 @@
             // encryptButton
             // 
             this.encryptButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.encryptButton.Location = new System.Drawing.Point(441, 358);
+            this.encryptButton.Location = new System.Drawing.Point(331, 280);
+            this.encryptButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.encryptButton.Name = "encryptButton";
-            this.encryptButton.Size = new System.Drawing.Size(283, 49);
+            this.encryptButton.Size = new System.Drawing.Size(212, 40);
             this.encryptButton.TabIndex = 11;
             this.encryptButton.Text = "Зашифровать";
             this.encryptButton.UseVisualStyleBackColor = true;
@@ -279,9 +291,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 350);
             this.Controls.Add(this.encryptButton);
             this.Controls.Add(this.decryptButton);
             this.Controls.Add(this.openRawButton);
@@ -296,6 +308,7 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "RSA Шифрование";
             this.menuStrip1.ResumeLayout(false);

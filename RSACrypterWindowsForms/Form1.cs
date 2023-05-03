@@ -68,7 +68,9 @@ namespace RSACrypterWindowsForms
             sfd.Title = "Сохранить в файл";
             sfd.DefaultExt = ".crypt";
             if (sfd.ShowDialog() != DialogResult.OK) return;
-            File.WriteAllBytes(sfd.FileName, RSAEncryptionDecryption.encrypt(RSA, DES, Encoding.UTF8.GetBytes(decryptedTextBox.Text)));
+            raw_data = Encoding.UTF8.GetBytes(decryptedTextBox.Text);
+            encrypted_data = RSAEncryptionDecryption.encrypt(RSA, DES, raw_data);
+            File.WriteAllBytes(sfd.FileName, encrypted_data);
             MessageBox.Show("Данные успешно зашифрованы и сохранены", "Шифрование RSA", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -88,11 +90,11 @@ namespace RSACrypterWindowsForms
 
         private void saveEncryptedButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Сохранить зашифрованные данные в файл";
-            if (ofd.ShowDialog() != DialogResult.OK) return;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Title = "Сохранить зашифрованные данные в файл";
+            if (sfd.ShowDialog() != DialogResult.OK) return;
             encrypted_data = Encoding.UTF8.GetBytes(encryptedTextBox.Text);
-            File.WriteAllBytes(ofd.FileName, encrypted_data);
+            File.WriteAllBytes(sfd.FileName, encrypted_data);
         }
 
         private void openRawButton_Click(object sender, EventArgs e)
